@@ -1,6 +1,43 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": [
-    "config:base"
+    "config:base",
+    ":disableDependencyDashboard",
+    ":separatePatchReleases"
+  ],
+  "commitMessagePrefix": "[TASK] ",
+  "commitMessageTopic": "{{depName}}",
+  "commitMessageExtra": " ({{{displayFrom}}} => {{{displayTo}}})",
+  "composerIgnorePlatformReqs": null,
+  "platformAutomerge": true,
+  "rangeStrategy": "update-lockfile",
+  "packageRules": [
+    {
+      "matchDatasources": ["docker"],
+      "matchPackageNames": ["thecodingmachine/php"],
+      "enabled": false
+    },
+    {
+      "matchPackageNames": ["php"],
+      "enabled": false
+    },
+    {
+      "matchPackagePrefixes": [
+        "typo3/"
+      ],
+      "matchManagers": ["composer"],
+      "enabled": false
+    }
+  ],
+  "regexManagers": [
+    {
+      "fileMatch": ["^composer.lock$"],
+      "matchStrings": [
+        "\"name\": \"typo3\\/cms-core\",\\n\\s+\"version\": \"(?<currentValue>[^\"]+)\""
+      ],
+      "depNameTemplate": "typo3/*",
+      "packageNameTemplate": "typo3/cms-core",
+      "datasourceTemplate": "packagist"
+    }
   ]
 }
