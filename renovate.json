@@ -33,6 +33,7 @@
         "typo3/"
       ],
       "matchManagers": ["regex"],
+      "commitMessageTopic": "TYPO3 CMS",
       "labels": [
         "typo3"
       ],
