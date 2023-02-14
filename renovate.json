@@ -27,6 +27,18 @@
       ],
       "matchManagers": ["composer"],
       "enabled": false
+    },
+    {
+      "matchPackagePrefixes": [
+        "typo3/"
+      ],
+      "matchManagers": ["regex"],
+      "labels": [
+        "typo3"
+      ],
+      "extends": [
+        ":disableMajorUpdates"
+      ]
     }
   ],
   "regexManagers": [
